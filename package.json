@@ -17,6 +17,7 @@
     "@types/react-router-dom": "^5.1.6",
     "apollo": "^2.32.0",
     "autoprefixer": "^10.1.0",
+    "cypress": "^6.2.0",
     "graphql": "^15.4.0",
     "postcss": "^8.2.1",
     "react": "^17.0.1",
@@ -25,7 +26,7 @@
     "react-helmet-async": "^1.0.7",
     "react-hook-form": "^6.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1-next.98",
+    "react-scripts": "4.0.0-next.98",
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.0.2",
     "typescript": "^4.0.3",
@@ -37,6 +38,7 @@
     "apollo:codegen": " rimraf src/__generated__ && apollo client:codegen src/__generated__ --target=typescript --outputFlat",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -57,7 +59,16 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "./src/components/**/*.tsx",
+      "./src/pages/**/*.tsx",
+      "./src/routers/**/*.tsx"
+    ]
+  },
   "devDependencies": {
-    "@types/react": "^16.14.2"
+    "@testing-library/cypress": "^7.0.3",
+    "@types/react": "^16.14.2",
+    "mock-apollo-client": "^1.0.0"
   }
 }
