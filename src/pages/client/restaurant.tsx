@@ -85,7 +85,7 @@ export const Restaurant = () => {
     if (oldItem) {
       removeFromOrder(dishId);
       const hasOption = Boolean(
-        oldItem.options?.find((aOption) => aOption.name == optionName),
+        oldItem.options?.find((aOption) => aOption.name === optionName),
       );
       if (!hasOption) {
         removeFromOrder(dishId);
@@ -148,6 +148,9 @@ export const Restaurant = () => {
     onCompleted,
   });
   const triggerConfirmOrder = () => {
+    if (placingOrder) {
+      return;
+    }
     if (orderItems.length === 0) {
       alert("Can't place empty order");
       return;
@@ -175,7 +178,7 @@ export const Restaurant = () => {
           backgroundImage: `url(${data?.restaurant.restaurant?.coverImg})`,
         }}
       >
-        <div className="bg-white w-3/12 py-8 pl-48">
+        <div className="bg-white xl:w-3/12 py-8 pl-48">
           <h4 className="text-4xl mb-3">{data?.restaurant.restaurant?.name}</h4>
           <h5 className="text-sm font-light mb-2">
             {data?.restaurant.restaurant?.category?.name}
